@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  border: none;
+  padding: 10px;
+  border-radius: 0.375rem;
+  color: var(--secondary-text);
+}

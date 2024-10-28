@@ -1,0 +1,9 @@
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  & p {
+    font-size: var(--text-xs);
+  }
+}

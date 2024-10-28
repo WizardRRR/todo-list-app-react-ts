@@ -1,0 +1,42 @@
+.checkbox {
+  font-size: var(--text-sm);
+  color: var(--primary-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input[type='checkbox'] {
+  display: none;
+}
+
+/* Estilo de la caja del checkbox */
+.checkbox .checkmark {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  border: 1px solid var(--primary-text);
+  background-color: transparent;
+  border-radius: 4px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+/* Cambia el color cuando esté marcado */
+.checkbox input[type='checkbox']:checked + .checkmark {
+  border: none;
+  background-color: var(--skyblue);
+}
+
+/* Agrega una marca de verificación */
+.checkbox input[type='checkbox']:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
