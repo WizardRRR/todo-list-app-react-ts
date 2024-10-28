@@ -1,9 +1,6 @@
 import styles from './app.module.css'
-import Button from './components/button/button'
-import Header from './components/header/header'
-import VisibilityOff from './components/icons/visibility-off'
-import Input from './components/input/input'
-import Tasks from './components/tasks/tasks'
+import { Button, Header, Input, Tasks } from './components'
+import { VisibilityOff } from './components/icons'
 
 export default function App() {
   return (

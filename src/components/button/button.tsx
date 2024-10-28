@@ -5,7 +5,7 @@ interface ButtonProps {
   prefixElement?: React.ReactNode
   onClick?: () => void
 }
-export default function Button({ title, prefixElement, onClick }: ButtonProps) {
+export function Button({ title, prefixElement, onClick }: ButtonProps) {
   return (
     <button className={styles.button} onClick={onClick}>
       {prefixElement}

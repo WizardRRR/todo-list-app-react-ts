@@ -6,7 +6,7 @@ interface InputProps {
   onChange: (value: string) => void
 }
 
-export default function Input({ placeholder, onChange, value }: InputProps) {
+export function Input({ placeholder, onChange, value }: InputProps) {
   return (
     <input
       className={styles.input}

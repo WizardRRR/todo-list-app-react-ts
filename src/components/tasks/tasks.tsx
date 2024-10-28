@@ -1,7 +1,7 @@
-import Task from '../task/task'
+import { Task } from '../task/task'
 import styles from './tasks.module.css'
 
-export default function Tasks() {
+export function Tasks() {
   return (
     <div className={styles.tasks}>
       <p>3 concluidos</p>

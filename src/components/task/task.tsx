@@ -4,7 +4,7 @@ interface TaskProps {
   checked?: boolean
   onChange?: (checked: boolean) => void
 }
-export default function Task({ title, checked, onChange }: TaskProps) {
+export function Task({ title, checked, onChange }: TaskProps) {
   return (
     <label
       style={{ textDecoration: checked ? 'line-through' : 'none' }}
