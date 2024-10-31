@@ -2,12 +2,17 @@ import { useState } from 'react'
 import styles from './app.module.css'
 import { Button, Header, Input, Tasks } from './components'
 import { VisibilityOff } from './components/icons'
-import { mockTasks } from './tasks.mock'
 import { Task } from './types/task'
-import { generateUUID } from './utils'
+import { generateUUID, getItemLocalStorage, setItemLocalStorage } from './utils'
 
 export default function App() {
-  const [tasks, setTasks] = useState<Task[]>(mockTasks)
+  const tasks = (() => {
+    const storedTasks = getItemLocalStorage<Task[]>('tasks')
+    if (storedTasks) return storedTasks
+    setItemLocalStorage('tasks', [])
+    return []
+  })()
+
   const [tasksFiltered, setTasksFiltered] = useState(tasks)
 
   const unfinishedTasks = tasks.filter((task) => !task.checked)
@@ -24,7 +29,7 @@ export default function App() {
     const newTask = { id: generateUUID(), title: taskTitle, checked: false }
     const newTasks: Task[] = [...tasks, newTask]
 
-    setTasks(newTasks)
+    setItemLocalStorage('tasks', newTasks)
     setTasksFiltered(
       isOnlyUncompleted ? newTasks.filter((task) => !task.checked) : newTasks
     )
@@ -36,7 +41,7 @@ export default function App() {
       if (task.id === id) return { ...task, checked }
       return task
     })
-    setTasks(newTasks)
+    setItemLocalStorage('tasks', newTasks)
     setTasksFiltered(
       isOnlyUncompleted ? newTasks.filter((task) => !task.checked) : newTasks
     )
@@ -44,7 +49,7 @@ export default function App() {
 
   const handleDelete = (id: string) => {
     const newTasks = tasks.filter((task) => task.id !== id)
-    setTasks(newTasks)
+    setItemLocalStorage('tasks', newTasks)
     setTasksFiltered(
       isOnlyUncompleted ? newTasks.filter((task) => !task.checked) : newTasks
     )
@@ -52,7 +57,7 @@ export default function App() {
 
   const handleEdit = (task: Task) => {
     const newTasks = tasks.map((t) => (t.id === task.id ? task : t))
-    setTasks(newTasks)
+    setItemLocalStorage('tasks', newTasks)
     setTasksFiltered(
       isOnlyUncompleted ? newTasks.filter((task) => !task.checked) : newTasks
     )

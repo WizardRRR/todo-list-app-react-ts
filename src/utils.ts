@@ -5,3 +5,18 @@ export function generateUUID() {
     return value.toString(16)
   })
 }
+
+export function setItemLocalStorage<T>(key: string, value: T): void {
+  const serializedValue = JSON.stringify(value)
+  localStorage.setItem(key, serializedValue)
+}
+
+export function getItemLocalStorage<T>(key: string): T | null {
+  const serializedValue = localStorage.getItem(key)
+  if (serializedValue === null) return null
+  return JSON.parse(serializedValue) as T
+}
+
+export function removeItemLocalStorage(key: string): void {
+  localStorage.removeItem(key)
+}
