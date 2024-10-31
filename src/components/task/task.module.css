@@ -1,3 +1,45 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.options {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  background-color: var(--bg-secondary);
+  transition: opacity 0.3s ease;
+
+  & button {
+    padding: 10px;
+  }
+}
+
+.edit-form {
+  width: 100%;
+
+  & input {
+    padding: 3px;
+    width: 100%;
+    border-bottom: 1px solid var(--secondary-text);
+    color: var(--primary-text);
+
+    &:focus-visible {
+      outline: 1px solid var(--secondary-text);
+    }
+  }
+}
+
+.show-options {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .checkbox {
   font-size: var(--text-sm);
   color: var(--primary-text);

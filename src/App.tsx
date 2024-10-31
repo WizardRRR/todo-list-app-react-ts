@@ -18,7 +18,7 @@ export default function App() {
     else setTasksFiltered(unfinishedTasks)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSave = (e: React.FormEvent) => {
     e.preventDefault()
     const taskTitle = (e.target as HTMLFormElement).task.value
     const newTask = { id: generateUUID(), title: taskTitle, checked: false }
@@ -42,6 +42,22 @@ export default function App() {
     )
   }
 
+  const handleDelete = (id: string) => {
+    const newTasks = tasks.filter((task) => task.id !== id)
+    setTasks(newTasks)
+    setTasksFiltered(
+      isOnlyUncompleted ? newTasks.filter((task) => !task.checked) : newTasks
+    )
+  }
+
+  const handleEdit = (task: Task) => {
+    const newTasks = tasks.map((t) => (t.id === task.id ? task : t))
+    setTasks(newTasks)
+    setTasksFiltered(
+      isOnlyUncompleted ? newTasks.filter((task) => !task.checked) : newTasks
+    )
+  }
+
   return (
     <div className={styles.app}>
       <Header />
@@ -54,11 +70,13 @@ export default function App() {
         />
       </div>
       <Tasks
+        onDelete={handleDelete}
+        onEdit={handleEdit}
         tasks={tasksFiltered}
         concludedTask={tasks.filter((task) => task.checked).length}
         onCheckedTask={handleChangeCheckbox}
       />
-      <form onSubmit={handleSubmit} className={styles['input-wrapper']}>
+      <form onSubmit={handleSave} className={styles['input-wrapper']}>
         <Input placeholder='Nueva Nota' name='task' />
       </form>
     </div>
