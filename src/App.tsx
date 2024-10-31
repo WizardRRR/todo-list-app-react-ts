@@ -86,6 +86,15 @@ export default function App() {
         concludedTask={tasks.filter((task) => task.checked).length}
         onCheckedTask={handleChangeCheckbox}
       />
+      {tasks.length === 0 && (
+        <div className={styles.empty}>
+          <p>Bienvenido a mi To Do List!</p>
+          <p>Crea una nueva tarea para comenzar</p>
+        </div>
+      )}
+      {unfinishedTasks.length === 0 && (
+        <p className={styles['no-tasks']}>No hay tareas pendientes, felicidades!</p>
+      )}
       <form onSubmit={handleSave} className={styles['input-wrapper']}>
         <Input placeholder='Nueva Nota' name='task' />
       </form>

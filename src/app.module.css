@@ -25,3 +25,20 @@
     justify-content: flex-end;
   }
 }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  & p:first-child {
+    color: var(--primary-text);
+    font-size: var(--text-xl);
+  }
+}
+
+.no-tasks {
+  color: var(--skyblue);
+  font-size: var(--text-md);
+}
