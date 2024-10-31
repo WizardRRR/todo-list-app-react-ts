@@ -1,13 +1,23 @@
-import { Task } from '../task/task'
+import { Task } from '../../types/task'
+import { Task as TaskComponent } from '../task/task'
 import styles from './tasks.module.css'
-
-export function Tasks() {
+interface TasksProps {
+  tasks: Task[]
+  concludedTask: number
+  onCheckedTask: (id: string, checked: boolean) => void
+}
+export function Tasks({ tasks, concludedTask, onCheckedTask }: TasksProps) {
   return (
     <div className={styles.tasks}>
-      <p>3 concluidos</p>
-      <Task title='Pasear al perro de la calle. Tarea 1, 2 y 3, Tarea 1' />
-      <Task title='Tarea 2' />
-      <Task title='Tarea 3' />
+      <p>{concludedTask} concluidos</p>
+      {tasks.map((task) => (
+        <TaskComponent
+          key={task.id}
+          title={task.title}
+          checked={task.checked}
+          onChange={(checked) => onCheckedTask(task.id, checked)}
+        />
+      ))}
     </div>
   )
 }
