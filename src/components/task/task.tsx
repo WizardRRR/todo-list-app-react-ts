@@ -9,7 +9,7 @@ interface TaskProps {
   onEdit: (task: TaskType) => void
 }
 export function Task({ onChange, task, onDelete, onEdit }: TaskProps) {
-  const { title, checked, id } = task
+  const { title, checked, id, createdAt } = task
   const [showOptions, setShowOptions] = useState(false)
   const [canEdit, setCanEdit] = useState(false)
   const refEditInput = useRef<HTMLInputElement | null>(null)
@@ -41,7 +41,7 @@ export function Task({ onChange, task, onDelete, onEdit }: TaskProps) {
   const handleSubmitEdit = (e: React.FormEvent) => {
     e.preventDefault()
     const taskTitle = (e.target as HTMLFormElement).task.value
-    const newTask = { id, title: taskTitle, checked }
+    const newTask = { id, title: taskTitle, checked, createdAt }
     setCanEdit(false)
     onEdit(newTask)
   }

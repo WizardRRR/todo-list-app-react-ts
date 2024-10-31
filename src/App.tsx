@@ -26,7 +26,12 @@ export default function App() {
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault()
     const taskTitle = (e.target as HTMLFormElement).task.value
-    const newTask = { id: generateUUID(), title: taskTitle, checked: false }
+    const newTask = {
+      id: generateUUID(),
+      title: taskTitle,
+      checked: false,
+      createdAt: new Date().toISOString()
+    }
     const newTasks: Task[] = [...tasks, newTask]
 
     setItemLocalStorage('tasks', newTasks)

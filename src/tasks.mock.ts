@@ -5,26 +5,31 @@ export const mockTasks: Task[] = [
   {
     id: generateUUID(),
     title: 'Llevar el carro al taller para mantenimiento',
-    checked: true
+    checked: true,
+    createdAt: new Date().toISOString()
   },
   {
     id: generateUUID(),
     title: 'Comprar alimentos para la semana en el mercado',
-    checked: false
+    checked: false,
+    createdAt: new Date().toISOString()
   },
   {
     id: generateUUID(),
     title: 'Enviar informe mensual de ventas a administración',
-    checked: true
+    checked: true,
+    createdAt: new Date().toISOString()
   },
   {
     id: generateUUID(),
     title: 'Limpiar y organizar el escritorio de trabajo',
-    checked: false
+    checked: false,
+    createdAt: new Date().toISOString()
   },
   {
     id: generateUUID(),
     title: 'Programar una reunión con el equipo de desarrollo',
-    checked: true
+    checked: true,
+    createdAt: new Date().toISOString()
   }
 ]
